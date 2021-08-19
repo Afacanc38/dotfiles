@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Pencere başlıkları ve i3bar'ın yazı tipini değiştirir.
-font pango:monospace 8
+font pango:Iosevka Term 9
 
 # xss-lock bir süre sonra bilgisayarın uykuya geçmesini ve daha sonra i3lock
 # tarafından kilitlenmesini sağlar.
