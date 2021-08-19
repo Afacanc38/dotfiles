@@ -59,6 +59,7 @@ pacman -Syu \
 	ttf-sarasa-gothic \
 	ttf-sazanami \
 	ttf-tibetan-machine \
+	ttc-iosevka \
 	arc-gtk-theme \
 	lxappearance \
 	--noconfirm
