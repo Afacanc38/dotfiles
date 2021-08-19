@@ -162,8 +162,8 @@ bar {
 		focused_workspace  #101010 #101010 #FF216C
 		active_workspace   #101010 #101010 #FFFFFF
 		inactive_workspace #101010 #101010 #888888
-		urgent_workspace   #E91E63 #E91E63 #FFFFFF
-		binding_mode       #E91E63 #E91E63 #FFFFFF
+		urgent_workspace   #880E4F #880E4F #FFFFFF
+		binding_mode       #E91E63 #880E4F #FFFFFF
 	}
 	position top
 }
@@ -179,7 +179,7 @@ exec --no-startup-id "feh --bg-scale  ~/.config/i3/duvarkağıdı.png"
 
 # Renkleri değiştirelim.
 # sınıf                 kenar   arkpln  yazı    gösterge  çocuk kenarı
-client.focused          #E91E63 #E91E63 #FFFFFF #E91E63   #E91E63
+client.focused          #880E4F #880E4F #FFFFFF #880E4F   #880E4F
 client.focused_inactive #880E4F #880E4F #FFFFFF #880E4F   #880E4F
 client.unfocused        #212121 #212121 #888888 #212121   #212121
 client.urgent           #E53935 #E53935 #FFFFFF #E53935   #E53935
