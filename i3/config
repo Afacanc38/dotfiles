@@ -1,0 +1,197 @@
+# i3 yapılandırma dosyası (v4)
+#
+# https://i3wm.org/docs/userguide.html adresine göz atarak daha fazlasını öğ-
+# renebilirsiniz!
+
+set $mod Mod4
+
+# Pencere başlıkları ve i3bar'ın yazı tipini değiştirir.
+font pango:monospace 8
+
+# xss-lock bir süre sonra bilgisayarın uykuya geçmesini ve daha sonra i3lock
+# tarafından kilitlenmesini sağlar.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager GNU/Linux üzerinde popüler bir ağ yöneticisidir.
+exec --no-startup-id nm-applet
+
+# pactl komutları ile sesi ayarlayın
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# $mod+sol tık ile yüzer (floating) kipinde pencereleri taşıyın.
+floating_modifier $mod
+
+# uçbirim başlar
+bindsym $mod+Return exec alacritty
+
+# odaklanmış pencereyi kapat
+bindsym $mod+Shift+q kill
+
+# odağı değiştir
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+scedilla focus right
+
+# alternatif olarak yön tuşları ile odağı değiştir:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# pencerelerin bulunduğu yeri değiştir
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+scedilla move right
+
+# bu işlev de yön tuşları ile yapılabilir:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# yeni pencere açıldığında dikey pozisyon ayarlarlanır
+bindsym $mod+h split h
+
+# yeni pencere açıldığında yatay pozisyon ayarlanır
+bindsym $mod+v split v
+
+# odaklanmış pencereyi tam ekran yapar
+bindsym $mod+f fullscreen toggle
+
+# konteyner kipini değiştirir (yığın, sekmeli, bölmeli)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# başlıklı/yüzen kipleri arasında geçiş yapar
+bindsym $mod+Shift+space floating toggle
+
+# (nasıl açıklayacağımı bilemedim, kendiniz deneyin)
+bindsym $mod+space focus mode_toggle
+
+# ebeveyn konteynere odaklanır
+bindsym $mod+a focus parent
+
+# çocuk konteynere odaklanır (aynı kısayolu kullandığı için kapalı)
+#bindsym $mod+a focus child
+
+# çalışma alanlarının adlandırır ve klavye kısayolları için onlara
+# değişken atar
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# çalşma alanları arasında geçiş yapar
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# odaklanmış konteyneri çalışma alanlara taşır
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# yapılandırma dosyasını yenile
+bindsym $mod+Shift+c reload
+# i3'ü yeniden başlat
+bindsym $mod+Shift+r restart
+# i3'den çık (X oturumu sonlanacaktır)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Çıkış kısayoluna bastınız. Gerçekten i3 pencere yöneticisinden çıkmak istediğinizden emin misiniz? Bu işlem X oturumunu sonlandırır.' -B 'Evet, çık!' 'i3-msg exit'"
+
+# konteynerleri yeniden boyutlandırır (konteynerleri yeniden boyutlandırmak
+# için farenizi kullanabilirsiniz)
+mode "yeniden boyutlandırma kipi" {
+        # boyutlandırma için klavye kombinasyonlarını kullanırsınız.
+	
+	# j dikey olarak, l yatay olarak küçültür.
+	# k dikey olarak, ş yatay olarak büyültür.
+	bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym scedilla resize grow width 10 px or 10 ppt
+
+        # aynı şeyler, ama yön tuşlarıyla
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # kipten çıkmak için enter, esc ve $mod+r kullanabilirsiniz.
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "yeniden boyutlandırma kipi"
+
+# i3bar, i3 pencere yöneticisi ile kullanılan popüler bir paneldir.
+bar {
+        status_command i3status -c .config/i3/i3status.conf
+	colors {
+		background #101010
+		statusline #FFFFFF
+		separator  #212121
+
+		focused_workspace  #101010 #101010 #FF216C
+		active_workspace   #101010 #101010 #FFFFFF
+		inactive_workspace #101010 #101010 #888888
+		urgent_workspace   #E91E63 #E91E63 #FFFFFF
+		binding_mode       #E91E63 #E91E63 #FFFFFF
+	}
+	position top
+}
+
+# pencere başlığını kaldıralım
+for_window [class="^.*"] border pixel 2
+
+# picom'u başlatalım
+exec --no-startup-id "picom --experimental-backends"
+
+# duvar kağıdını ayarlayalım (siz kendi duvar kağıdınızın bulunduğu yeri yazın.)
+exec --no-startup-id "feh --bg-scale  ~/.config/i3/duvarkağıdı.png"
+
+# Renkleri değiştirelim.
+# sınıf                 kenar   arkpln  yazı    gösterge  çocuk kenarı
+client.focused          #E91E63 #E91E63 #FFFFFF #E91E63   #E91E63
+client.focused_inactive #880E4F #880E4F #FFFFFF #880E4F   #880E4F
+client.unfocused        #212121 #212121 #888888 #212121   #212121
+client.urgent           #E53935 #E53935 #FFFFFF #E53935   #E53935
+client.placeholder      #212121 #212121 #FFFFFF #212121   #212121
+
+client.background       #FFFFFF
+
+# dmenu kullanımı rahat (en azından bana göre) bir başlatıcıdır.
+bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#212121' -sb '#E91E63' -sf '#FFFFFF' -fn 'monospace-10' -p 'dmenu > '"
+
+# firefox'u başlatır
+bindsym $mod+b exec "firefox"
+
+# dosya yöneticisini başlatır
+bindsym $mod+u exec "thunar" 

@@ -1,0 +1,29 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# komut satırını ayarlar
+PS1='\[\033[1;31m\]\u: \[\033[1;34m\]\W \$ \[\033[0m\]'
+
+# kullanışlı kısaltmalar
+#alias nano="vim"
+alias ls="ls --color=auto"
+alias l="ls --color=auto"
+alias ll="ls -l"
+alias la="ls -a"
+alias lal="ls -al"
+alias rm="rm -rf"
+alias shconf="vim ~/.bashrc ; . ~/.bashrc"
+alias sudo="doas"
+alias d="doas"
+alias v="vim"
+alias iconf="vim ~/.config/i3/config"
+alias hebele="echo 'hübele'"
+alias c="clear"
+alias terminal="alacritty"
+alias packup="doas pacman -Syy"
+alias doaspacman="doas pacman"
+alias package="doas pacman"
