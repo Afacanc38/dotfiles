@@ -188,7 +188,7 @@ client.placeholder      #212121 #212121 #FFFFFF #212121   #212121
 client.background       #FFFFFF
 
 # dmenu kullanımı rahat (en azından bana göre) bir başlatıcıdır.
-bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#212121' -sb '#E91E63' -sf '#FFFFFF' -fn 'monospace-10' -p 'dmenu > '"
+bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#212121' -sb '#E91E63' -sf '#FFFFFF' -fn 'iosevka-term-8' -p 'dmenu > '"
 
 # firefox'u başlatır
 bindsym $mod+b exec "firefox"
