@@ -15,6 +15,6 @@ Not: Kurulum betiği henüz test edilmedi.
 font-awesome https://github.com/FortAwesome/Font-Awesome
 iosevka-font https://github.com/be5invis/Iosevka
 alacritty
-i3
+i3wm
 dmenu
 ```
