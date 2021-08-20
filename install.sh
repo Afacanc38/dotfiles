@@ -41,7 +41,6 @@ pacman -Syu \
 	ttf-ibm-plex \
 	ttf-inconsolata \
 	ttf-indic-otf \
-	ttf-ionicons \
 	ttf-jetbrains-mono \
 	ttf-joypixels \
 	ttf-junicode \
