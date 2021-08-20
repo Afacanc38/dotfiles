@@ -64,9 +64,10 @@ pacman -Syu \
 	lxappearance \
 	--noconfirm
 echo -e "\033[1mDosyalar kopyalanıyor...\033[0m"
-cp i3/ ~/.config/
-mkdir ~/.config/alacritty/
-cp -v Alacritty/* ~/.config/alacritty
-cp -v Prompt/bashrc ~/.bashrc
-cp -v Prompt/bashrc-root /root/.bashrc
+mkdir /home/$("logname")/.config
+cp i3/ /home/$("logname")/.config/
+mkdir /home/$("logname")/.config/alacritty/
+cp -vr Alacritty/* /home/$("logname")/.config/alacritty
+cp -vr Prompt/bashrc /home/$("logname")/.bashrc
+cp -vr Prompt/bashrc-root /root/.bashrc
 echo -e "\033[1mKurulum tamamlandı."
