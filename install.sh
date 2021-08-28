@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ "$EUID" -ne 0 ]
 	 then echo "Bu betik süper kullanıcı ayrıcalıklarına ihtiyaç duyar."
-		    exit
+		    exit 1
 fi
 echo -e "Kuruluma başlamadan önce .bashrc dosyasındaki paket yöneticisi ve sudo/doas komutlarını düzenlemek isteyebilirsiniz."
 read
