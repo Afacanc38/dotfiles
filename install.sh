@@ -61,7 +61,8 @@ pacman -Syu \
 	ttc-iosevka \
 	arc-gtk-theme \
 	lxappearance \
-	--noconfirm
+	--noconfirm \
+	--needed
 echo -e "\033[1mDosyalar kopyalanıyor...\033[0m"
 mkdir /home/$("logname")/.config
 cp i3/ /home/$("logname")/.config/
